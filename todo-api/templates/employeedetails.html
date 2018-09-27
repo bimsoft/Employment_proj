@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Flask Intro - Employee project details page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome Mr Bimlesh...</h1>
+      <br>
+      <form action="http://bimlesh3146322:5000/submitproj" method="post">
+        <table>
+          
+          <tr align="center" ><td> <b>Enter your project details...</b> </td></tr>
+          <tr><td> User Name </td><td><input type="text" placeholder="Username" name="username" value=""></td></tr>
+          <tr><td> Company Name</td><td><input type="text" placeholder="Company" name="company" value=""></td></tr>
+          <tr><td> BU Name</td><td><input type="text" placeholder="BU Name" name="bu" value=""></td></tr>
+          <tr><td> Client Name</td><td><input type="text" placeholder="Client" name="client" value=""></td></tr>
+          <tr><td> Project Name</td><td><input type="text" placeholder="Project" name="project" value=""></td></tr>
+          <tr><td> Duration</td><td><input type="text" placeholder="Duration" name="duration" value=""></td></tr>
+          <tr><td> Location</td><td><input type="text" placeholder="Location" name="location" value=""></td></tr>
+        <tr><td><input class="btn btn-default" type="submit" value="Login"></td></tr>
+      </table>
+      </form>
+      
+    </div>
+  </body>
+</html>
