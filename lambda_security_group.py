@@ -1,3 +1,5 @@
+# This will add ingress and egress rule for both SG
+
 import json
 import boto3
 from botocore.exceptions import ClientError
