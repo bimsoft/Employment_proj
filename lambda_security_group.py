@@ -1,3 +1,4 @@
+# This script will create 2 security group
 import json
 import boto3
 from botocore.exceptions import ClientError
