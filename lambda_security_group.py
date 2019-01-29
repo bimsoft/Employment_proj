@@ -1,3 +1,4 @@
+# This script will create 2 security group
 # This will add ingress and egress rule for both SG
 
 import json
