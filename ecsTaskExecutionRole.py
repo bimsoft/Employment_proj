@@ -69,6 +69,6 @@ response = client.create_policy(
 # attach role policy 
 
 response = client.attach_role_policy(
-    RoleName='AmazonECSTaskExecutionRolePolicy',
-    PolicyArn='arn:aws:iam::596040584433:instance-profile/ecsTaskExecutionRole'
+    RoleName='ecsTaskExecutionRole-test',
+    PolicyArn='arn:aws:iam::596040584433:policy/AmazonECSTaskExecutionRolePolicy'
 )
