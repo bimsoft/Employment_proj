@@ -66,7 +66,7 @@ response = client.create_policy(
     PolicyDocument=policyroledoc
     )
 
-# attach role policy 
+# attach role with policy 
 
 response = client.attach_role_policy(
     RoleName='ecsTaskExecutionRole-test',
