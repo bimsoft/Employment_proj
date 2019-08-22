@@ -1,6 +1,6 @@
 pipeline{
 	
-	Agent any
+	agent any
 	stages {
 		stage {"Compile Stage"
 			steps {
