@@ -16,7 +16,7 @@ pipeline {
                 credentialsId: 'test',
                 url: 'https://github.com/bimsoft/Employment_proj.git'
 		sh 'pwd'
-		echo ${WORKSPACE}
+		echo "${WORKSPACE}"
    		sh 'ls -lrt'    
             }
         }
