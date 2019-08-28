@@ -15,7 +15,6 @@ pipeline {
 		git branch: 'test2-jenkin',
                 credentialsId: 'test',
                 url: 'https://github.com/bimsoft/Employment_proj.git'
-		sh 'pwd'
 		echo "${WORKSPACE}"
    		sh 'ls -lrt'    
             }
@@ -42,7 +41,8 @@ pipeline {
     }
     post {
     	always {
-		echo "WOW !!!"
+		echo "Wow.... Deleting Zip file from \${WORKSPACE}"
+		sh "rm -rf \${WORKSPACE}/todo-api.zip"
 		}
 	}
 }
