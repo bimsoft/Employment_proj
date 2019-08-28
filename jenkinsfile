@@ -24,7 +24,8 @@ pipeline {
         stage('creating zip') {
             steps {
                 echo 'Testing'
-                zip zipFile: 'todo-api.zip', dir:'todo-api'   
+                //zip zipFile: 'todo-api.zip', dir:'todo-api' 
+		zip archive: true, dir: 'todo-api', glob: '', zipFile: 'todo-api.zip'
 		sh 'ls -lrt todo-api'    
             }
         }
