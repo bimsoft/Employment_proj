@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    def props = readJSON file: 'general.json'
+    
     environment {
-        //def datas = readYaml file: 'dir/my.yml'
+        props = readJSON file: 'general.json'
     	filename = '/export/home/webadmin/.jenkins/jobs/mk245-test-folder/jobs/jasper-report-job/workspace/ExtensionCode/PickListReport/TMW/PickListReport.zip'
 	}
     parameters {
