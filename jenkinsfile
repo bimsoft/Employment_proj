@@ -5,7 +5,7 @@ pipeline {
     	filename = '/export/home/webadmin/.jenkins/jobs/mk245-test-folder/jobs/jasper-report-job/workspace/ExtensionCode/PickListReport/TMW/PickListReport.zip'
 	}
     parameters {
-    	gitParameter branchFilter: 'origin/(.*)', defaultValue: 'test2-jenki', name: 'BRANCH', type: 'PT_BRANCH'
+    	gitParameter branchFilter: 'origin/(.*)', defaultValue: 'test2-jenkin', name: 'BRANCH', type: 'PT_BRANCH'
   	}
     options {
         skipStagesAfterUnstable()
@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building from branch ${params.BRANCH}"
-		git branch: "test2-jenkin",
+		git branch: "origin/test2-jenkin",
                 credentialsId: 'test',
                 url: 'https://github.com/bimsoft/Employment_proj.git'
 		echo "${WORKSPACE}"
