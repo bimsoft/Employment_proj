@@ -2,10 +2,8 @@ pipeline {
     agent any
     
     environment {
-        //props = readJSON file: 'general.json'
-	props = load 'general.groovy'
-	
-    	filename = '/export/home/webadmin/.jenkins/jobs/mk245-test-folder/jobs/jasper-report-job/workspace/ExtensionCode/PickListReport/TMW/PickListReport.zip'
+        props = load 'general.groovy'
+	filename = '/export/home/webadmin/.jenkins/jobs/mk245-test-folder/jobs/jasper-report-job/workspace/ExtensionCode/PickListReport/TMW/PickListReport.zip'
 	}
     parameters {
     	gitParameter branchFilter: 'origin/(.*)', defaultValue: 'test2-jenkin', name: 'BRANCH', type: 'PT_BRANCH'
@@ -51,11 +49,11 @@ pipeline {
 	        script {
 			//sh "curl -v https://tssls.omni.manh.com/oauth/token?grant_type=password&username=admin@TMW.com&password=Password1!")
 			//sh('curl -b session -X POST http://deployhub.openmakesoftware.com/API/UserProfile?user=admin')
-			def response = httpRequest "https://reqres.in/api/users?page=2"
+			def response = httpRequest "https://reqres.in/api/users?page=${env.page}"
 			println('Status: '+response.status)
 			println('Response: '+response.content)
-			//echo "Password is --- " props['pass']
-			echo "User Name is -- ${env.user}"
+			echo "Password is --- ${env.pass}"
+			echo "User Name is -- ${env.page}"
 			//echo props['pass']
 			echo 'Deploy'
 			}
