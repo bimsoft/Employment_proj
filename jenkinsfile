@@ -53,8 +53,8 @@ pipeline {
 			println('Status: '+response.status)
 			println('Response: '+response.content)
 			//echo "Password is --- " props['pass']
-			//echo "User Name is -- ${props['user']}"
-			echo props['pass']
+			echo "User Name is -- ${props['user']}"
+			//echo props['pass']
 			echo 'Deploy'
 			}
             }
