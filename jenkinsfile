@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    load "environment.groovy"
+    def props = readJSON file: 'general.json'
     environment {
-    
+        //def datas = readYaml file: 'dir/my.yml'
     	filename = '/export/home/webadmin/.jenkins/jobs/mk245-test-folder/jobs/jasper-report-job/workspace/ExtensionCode/PickListReport/TMW/PickListReport.zip'
 	}
     parameters {
@@ -52,8 +52,8 @@ pipeline {
 			def response = httpRequest "https://reqres.in/api/users?page=2"
 			println('Status: '+response.status)
 			println('Response: '+response.content)
-			echo "Password is --- ${env.PASS}"
-			echo "User Name is -- ${env.USER}"
+			echo "Password is --- props['pass']"
+			echo "User Name is -- props['user']"
 			echo 'Deploy'
 			}
             }
