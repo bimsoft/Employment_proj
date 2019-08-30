@@ -16,6 +16,14 @@ pipeline {
                 credentialsId: 'test',
                 url: 'https://github.com/bimsoft/Employment_proj.git'
 		echo "${WORKSPACE}"
+		script {
+			if (params.folder-name == 'Parent') {
+				echo " Parent selected"
+			} else {
+				echo " ${parameter.folder-name} selected"
+			}
+		}
+		
    		sh 'ls -lrt'    
             }
         }
