@@ -2,7 +2,9 @@ pipeline {
     agent any
     
     environment {
-        props = readJSON file: 'general.json'
+        //props = readJSON file: 'general.json'
+	props = load 'general.groovy'
+	
     	filename = '/export/home/webadmin/.jenkins/jobs/mk245-test-folder/jobs/jasper-report-job/workspace/ExtensionCode/PickListReport/TMW/PickListReport.zip'
 	}
     parameters {
@@ -53,7 +55,7 @@ pipeline {
 			println('Status: '+response.status)
 			println('Response: '+response.content)
 			//echo "Password is --- " props['pass']
-			echo "User Name is -- ${props['user']}"
+			echo "User Name is -- ${env.user}"
 			//echo props['pass']
 			echo 'Deploy'
 			}
