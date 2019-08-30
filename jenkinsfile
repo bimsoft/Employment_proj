@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building from branch ${params.BRANCH}"
-		git branch: "${params.BRANCH}",
+		git branch: "test2-jenkin",
                 credentialsId: 'test',
                 url: 'https://github.com/bimsoft/Employment_proj.git'
 		echo "${WORKSPACE}"
