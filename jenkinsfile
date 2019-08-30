@@ -19,7 +19,7 @@ pipeline {
 		sh 'ls -lrt'
 		
 		script {
-			echo "parameter name ${params.folder-name}"
+			echo "parameter name..................."
 		/*
 			if (params.folder-name == 'Parent') {
 				echo " Parent selected"
