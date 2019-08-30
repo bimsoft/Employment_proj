@@ -19,12 +19,12 @@ pipeline {
 		sh 'ls -lrt'
 		
 		script {
-			echo "parameter name..................."
+			echo "parameter name...................${params.Choice}"
 		/*
-			if (params.folder-name == 'Parent') {
+			if (params.Choice == "Parent") {
 				echo " Parent selected"
 			} else {
-				echo " ${parameter.folder-name} selected"
+				echo " ${params.folder-name} selected"
 			} */
 		} 
 		
