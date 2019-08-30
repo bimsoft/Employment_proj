@@ -45,12 +45,14 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                //sh "curl -v https://tssls.omni.manh.com/oauth/token?grant_type=password&username=admin@TMW.com&password=Password1!")
-		//sh('curl -b session -X POST http://deployhub.openmakesoftware.com/API/UserProfile?user=admin')
-		def response = httpRequest "https://reqres.in/api/users?page=2"
-		println('Status: '+response.status)
-		println('Response: '+response.content)
-		echo 'Deploy'
+	        script {
+			//sh "curl -v https://tssls.omni.manh.com/oauth/token?grant_type=password&username=admin@TMW.com&password=Password1!")
+			//sh('curl -b session -X POST http://deployhub.openmakesoftware.com/API/UserProfile?user=admin')
+			def response = httpRequest "https://reqres.in/api/users?page=2"
+			println('Status: '+response.status)
+			println('Response: '+response.content)
+			echo 'Deploy'
+			}
             }
         }
     }
