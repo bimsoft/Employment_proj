@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    load "environment.groovy"
     environment {
     
     	filename = '/export/home/webadmin/.jenkins/jobs/mk245-test-folder/jobs/jasper-report-job/workspace/ExtensionCode/PickListReport/TMW/PickListReport.zip'
@@ -51,6 +52,8 @@ pipeline {
 			def response = httpRequest "https://reqres.in/api/users?page=2"
 			println('Status: '+response.status)
 			println('Response: '+response.content)
+			echo "Password is --- ${env.PASS}"
+			echo "User Name is -- ${env.USER}"
 			echo 'Deploy'
 			}
             }
