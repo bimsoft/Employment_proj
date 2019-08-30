@@ -52,8 +52,8 @@ pipeline {
 			def response = httpRequest "https://reqres.in/api/users?page=2"
 			println('Status: '+response.status)
 			println('Response: '+response.content)
-			echo "Password is --- props['pass']"
-			echo "User Name is -- props['user']"
+			echo "Password is --- ${props['pass']}"
+			echo "User Name is -- ${props['user']}"
 			echo 'Deploy'
 			}
             }
