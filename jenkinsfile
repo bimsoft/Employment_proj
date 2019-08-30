@@ -17,14 +17,16 @@ pipeline {
                 url: 'https://github.com/bimsoft/Employment_proj.git'
 		echo "${WORKSPACE}"
 		sh 'ls -lrt'
-		/*
+		
 		script {
+			echo "parameter name ${params.folder-name}"
+		/*
 			if (params.folder-name == 'Parent') {
 				echo " Parent selected"
 			} else {
 				echo " ${parameter.folder-name} selected"
-			}
-		} */
+			} */
+		} 
 		
    		   
             }
