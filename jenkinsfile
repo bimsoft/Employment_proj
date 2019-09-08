@@ -50,7 +50,9 @@ pipeline {
 			//sh "curl -H \"Accept:application/json\" -H \"Authorization: Basic `echo -n omnicomponent.1.0.0:b4s8rgTyg55XYNun | base64`\" -X POST 'https://tssls-auth.omni.manh.com/oauth/token?grant_type=password&username=admin@TMW.com&password=Password1"'!'"'"
 			//sh('curl -b session -X POST http://deployhub.openmakesoftware.com/API/UserProfile?user=admin')
 			//def response = httpRequest "https://reqres.in/api/users?page=${env.page}"
-			def response = httpRequest authentication: 'cred', url: "https://tssls-auth.omni.manh.com/oauth/token?grant_type=password&username=admin@TMW.com&password=Password1!"
+			//def response = httpRequest authentication: 'cred', url: "https://tssls-auth.omni.manh.com/oauth/token?grant_type=password&username=admin@TMW.com&password=Password1!"
+			def apiurl = "https://jsonplaceholder.typicode.com/posts/1"
+			def response = sh(returnStdout: true, script: -H \"Accept: application/json\" -H \"Content-type: application/json\" -X POST -d ${apiurl}").trim()
 			println('Status: '+response.status)
 			println('Response: '+response.content)
 			//echo "Password is --- ${env.pass}"
