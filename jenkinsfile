@@ -56,7 +56,7 @@ pipeline {
 			//def response = httpRequest authentication: 'cred', url: "https://tssls-auth.omni.manh.com/oauth/token?grant_type=password&username=admin@TMW.com&password=Password1!"
 			def apiurl = "https://jsonplaceholder.typicode.com/posts/1"
 			def response = sh(returnStdout: true, script: "curl -s -H \"Content-type: application/json\" -X GET ${apiurl}").trim()
-			def t_act = sh(returnStdout: true, script: "echo ${response} | grep \"user\" | cut -d \":\" -f 2")
+			def t_act = sh(returnStdout: true, script: "echo ${response} | grep \"user\"")
 			//def act = sh(returnStdout: true, script: "${t_act: -1}")
 			//println('Status: '+response.status)
 			//println('Response: '+response.content)
