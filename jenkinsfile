@@ -52,13 +52,13 @@ pipeline {
 			//def response = httpRequest "https://reqres.in/api/users?page=${env.page}"
 			//def response = httpRequest authentication: 'cred', url: "https://tssls-auth.omni.manh.com/oauth/token?grant_type=password&username=admin@TMW.com&password=Password1!"
 			def apiurl = "http://dummy.restapiexample.com/api/v1/employees"
-			def response = sh(returnStdout: true, script: "curl -S -X GET ${apiurl}").trim()
+			def response = sh(returnStdout: true, script: "curl -s -X GET ${apiurl}").trim()
 			//println('Status: '+response.status)
 			//println('Response: '+response.content)
 			//echo "Password is --- ${env.pass}"
 			//echo "User Name is -- ${env.page}"
 			//echo props['pass']
-			//echo 'Deploy'
+			echo "This is result ${response}"
 			}
             }
         }
