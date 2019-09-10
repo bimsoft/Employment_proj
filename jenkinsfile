@@ -57,9 +57,10 @@ pipeline {
 			//def apiurl = "https://jsonplaceholder.typicode.com/posts/1"
 			def apiurl = "http://dummy.restapiexample.com/api/v1/employees"
 			def response = sh(returnStdout: true, script: "curl -s -H \"Content-type: application/json\" -X GET ${apiurl}").trim()
-			writeJSON file: 'output.json', json: response, pretty: 4
-			def data = readJSON file:'output.json'
-    			echo "color: ${data[0].employee_name}"
+			
+			//writeJSON file: 'output.json', json: response, pretty: 4
+			//def data = readJSON file:'output.json'
+    			//echo "color: ${data[0].employee_name}"
 			
 			//def t_act = sh(returnStdout: true, script: "echo ${response}")
 			
@@ -70,7 +71,7 @@ pipeline {
 			//echo "Password is --- ${env.pass}"
 			//echo "User Name is -- ${env.page}"
 			//echo props['pass']
-			//echo "This is result ${t_act}"
+			echo "This is result ${response}"
 			}
             }
         }
