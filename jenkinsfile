@@ -57,7 +57,7 @@ pipeline {
 			//def apiurl = "https://jsonplaceholder.typicode.com/posts/1"
 			def apiurl = "http://dummy.restapiexample.com/api/v1/employees"
 			def response = sh(returnStdout: true, script: "curl -s -H \"Content-type: application/json\" -X GET ${apiurl}").trim()
-			def t_act = sh "echo ${response} | grep kishore"
+			def t_act = sh(returnStdout: true, script: "echo ${response}")
 			
 			//def act = sh(returnStdout: true, script: "${t_act: -1}")
 			
@@ -66,7 +66,7 @@ pipeline {
 			//echo "Password is --- ${env.pass}"
 			//echo "User Name is -- ${env.page}"
 			//echo props['pass']
-			echo "This is result ${t_act}"
+			//echo "This is result ${t_act}"
 			}
             }
         }
