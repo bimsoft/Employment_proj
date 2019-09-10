@@ -62,7 +62,7 @@ pipeline {
 			//def data = readJSON file:'output.json'
     			//echo "color: ${data[0].employee_name}"
 			
-			//def t_act = sh(returnStdout: true, script: "echo ${response}")
+			def t_act = sh(returnStdout: true, script: "echo ${response} | grep 'Raj' ")
 			
 			//def act = sh(returnStdout: true, script: "${t_act: -1}")
 			
@@ -71,7 +71,7 @@ pipeline {
 			//echo "Password is --- ${env.pass}"
 			//echo "User Name is -- ${env.page}"
 			//echo props['pass']
-			echo "This is result ${response}"
+			echo "This is result ${t_act}"
 			}
             }
         }
