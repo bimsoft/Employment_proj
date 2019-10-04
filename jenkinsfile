@@ -62,7 +62,7 @@ pipeline {
 			//def data = readJSON file:'output.json'
     			//echo "color: ${data[0].employee_name}"
 			
-			def t_act = sh(returnStdout: true, script: "echo ${response} | grep 'Raj' ")
+			//def t_act = sh(returnStdout: true, script: "echo ${response} | grep 'Raj' ")
 			
 			//def act = sh(returnStdout: true, script: "${t_act: -1}")
 			
@@ -72,7 +72,7 @@ pipeline {
 			//echo "User Name is -- ${env.page}"
 			//echo props['pass']
 			sh 'ssh ubuntu@ec2-3-19-72-68.us-east-2.compute.amazonaws.com ls -lrt'
-			echo "This is result ${t_act}"
+			//echo "This is result ${t_act}"
 			}
             }
         }
