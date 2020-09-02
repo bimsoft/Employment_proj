@@ -4,18 +4,17 @@
 import boto3
 import json
 import botocore
+from botocore.exceptions import ClientError
 
 #handle credential
-#[default]
-aws_access_key_id = YOUR_ACCESS_KEY
-aws_secret_access_key = YOUR_SECRET_KEY
+EAST_SESSION = boto3.Session(region_name = 'us-east-2')
+client = EAST_SESSION.client('iam')
 
-# create role 
-response = client.create_role(
-    Path='/', 
-    RoleName='glue-service-role-test',
-    AssumeRolePolicyDocument=
-    {
+#[default]
+# aws_access_key_id = YOUR_ACCESS_KEY
+# aws_secret_access_key = YOUR_SECRET_KEY
+
+role_policy = {
   "Version": "2012-10-17",
   "Statement": [
     {
@@ -27,14 +26,24 @@ response = client.create_role(
     }
   ]
 }
+
+
+# create role 
+newrolepolicy = json.dumps(role_policy)
+try:
+    response = client.create_role(
+        Path='/', 
+        RoleName='glue-service-role-test',
+        AssumeRolePolicyDocument=newrolepolicy
+        )
+except ClientError as E:
+    print "Issue during creating role %s" %E    
    
 
 #Create a policy
 
-response = client.create_policy(
-    PolicyName='glue-service-policy',
-    PolicyDocument=
-{
+ 
+role_policy = {
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -127,9 +136,20 @@ response = client.create_policy(
         }
     ]
 }
+
+policy_doc = json.dumps(role_policy)
+
+try:
+    response = client.create_policy(
+        PolicyName='glue-service-policy',
+        PolicyDocument=policy_doc
+        )
+except ClientError as E:
+    print "There is issue in creating policy %s" %E
+
 # attach role policy 
 response = client.attach_role_policy(
-    RoleName='glue-service-role-test'
-    PolicyArn='arn:aws:iam::596040584433:role/glue-service-role'
+    RoleName='glue-service-role-test',
+    PolicyArn='arn:aws:iam::596040584433:policy/glue-service-role'
 )
 #=====================================================================

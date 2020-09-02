@@ -3,11 +3,16 @@
 import boto3
 import json
 import botocore
+from botocore.exceptions import ClientError
 
 #handle credential
+EAST_SESSION = boto3.Session(region_name = 'us-east-2')
+client = EAST_SESSION.client('iam')
+# S3 = self.EAST_SESSION.resource('s3') 
+
 #[default]
-aws_access_key_id = YOUR_ACCESS_KEY
-aws_secret_access_key = YOUR_SECRET_KEY
+# aws_access_key_id = YOUR_ACCESS_KEY
+# aws_secret_access_key = YOUR_SECRET_KEY
 
 # create role 
 
@@ -25,13 +30,17 @@ rolepolicy = {
               ]
             }
 
-newrolepolicy = json.dumps(rolepolicy)           
-response = client.create_role(
-    Path='/', 
-    RoleName='config-service-role-test',
-    newrolepolicy = newrolepolicy
-    )
-    
+newrolepolicy = json.dumps(rolepolicy) 
+
+try:          
+    response = client.create_role(
+        Path='/', 
+        RoleName='config-service-role-test',
+        AssumeRolePolicyDocument = newrolepolicy
+        )
+except ClientError as E:
+    print "There is issue while creating Role %s" %E
+
 
 #Create a policy
 
@@ -150,10 +159,14 @@ policydoc = {
 }
 
 newpolicydoc = json.dumps(rolepolicy)
+
+# try:
 response = client.create_policy(
-    PolicyName='AWSConfigRole',
-    PolicyDocument=newpolicydoc
-    )
+        PolicyName='AWSConfigRole',
+        PolicyDocument=newpolicydoc
+        )
+# except ClientError as E:
+#     print "There is issue while creating policy %s" %E
 
 
 # attach role policy 

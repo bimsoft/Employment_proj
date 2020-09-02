@@ -5,13 +5,16 @@
 import boto3
 import json
 import botocore
-
+from botocore.exceptions import ClientError
 
 # handle credential
 
+EAST_SESSION = boto3.Session(region_name = 'us-east-2')
+client = EAST_SESSION.client('iam')
+
 # [default]
-aws_access_key_id = YOUR_ACCESS_KEY
-aws_secret_access_key = YOUR_SECRET_KEY
+# aws_access_key_id = YOUR_ACCESS_KEY
+# aws_secret_access_key = YOUR_SECRET_KEY
 
 
 # create role
@@ -30,12 +33,15 @@ rolepolicy = {
             }
 
 newrolepolicy = json.dumps(rolepolicy)
-response = client.create_role(
-    Path='string',
-    RoleName='ecsTaskExecutionRole-test',
-    AssumeRolePolicyDocument=newrolepolicy
-    )
 
+try:
+  response = client.create_role(
+      Path='/',
+      RoleName='ecsTaskExecutionRole-test',
+      AssumeRolePolicyDocument=newrolepolicy
+      )
+except ClientError as E:
+    print ("Not able to create Role %s" %E)
 
 #Create a policy
 
@@ -60,11 +66,18 @@ policyroledoc =  {
               ]
             }
 
-response = client.create_policy(
-    PolicyName='AmazonECSTaskExecutionRolePolicy ',
-    Path='/',
-    PolicyDocument=policyroledoc
-    )
+policyroledoc = json.dumps(policyroledoc)
+
+try:
+  response = client.create_policy(
+      PolicyName='AmazonECSTaskExecutionRolePolicy',
+      Path='/',
+      PolicyDocument=policyroledoc
+      )
+except ClientError as E:
+    print "There is issue while creating policy. %s" %E
+    
+
 
 # attach role with policy 
 
